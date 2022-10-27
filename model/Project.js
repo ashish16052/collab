@@ -6,11 +6,11 @@ const projectSchema = new Schema({
         default: Date.now(),
     },
     cDate: {
-        type: Number,
+        type: Date,
         required: true,
     },
     uDate: {
-        type: Number,
+        type: Date,
         required: true,
     },
     name: {
@@ -21,30 +21,13 @@ const projectSchema = new Schema({
         type: [
             {
                 userId: String,
-                role: String
+                role: String,
             }
         ],
         default: []
     },
     task: {
-        type: [
-            {
-                taskId: String,
-                title: String,
-                description: String,
-                start: Date,
-                end: Date,
-                taskStatus: String,
-                assign: String,
-                tags: [String],
-                subtask: [
-                    {
-                        subTaskTitle: String,
-                        done: Boolean
-                    }
-                ]
-            }
-        ],
+        type: [String],
         default: []
     },
 });

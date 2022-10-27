@@ -6,11 +6,11 @@ const userSchema = new Schema({
         default: Date.now(),
     },
     cDate: {
-        type: Number,
+        type: Date,
         required: true,
     },
     uDate: {
-        type: Number,
+        type: Date,
         required: true,
     },
     name: {
