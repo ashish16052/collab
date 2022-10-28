@@ -17,6 +17,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    profilePic: {
+        type: String,
+    },
+    subscription: {
+        type: String,
+        default: "free",
+    }
 });
 
 
