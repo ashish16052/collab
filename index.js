@@ -1,13 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const passport = require("passport");
+const session = require('express-session');
+const passportSetup = require('./lib/passport');
 const fs = require("fs");
 require("dotenv").config();
 const port = process.env.PORT;
 const app = express();
 
 var corsOptions = {
-    origin: "*",
+    origin: true,
+    credentials: true,
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -20,6 +24,14 @@ app.use(
         parameterLimit: 1000000,
     })
 );
+
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.connect(process.env.DB);
 

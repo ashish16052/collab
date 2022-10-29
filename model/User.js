@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     _id: {
         type: String,
-        default: Date.now(),
     },
     cDate: {
         type: Date,
@@ -18,6 +17,9 @@ const userSchema = new Schema({
         required: true,
     },
     profilePic: {
+        type: String,
+    },
+    email:{
         type: String,
     },
     subscription: {
