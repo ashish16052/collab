@@ -29,6 +29,7 @@ module.exports.controllerFunction = function (app) {
 
     mainRouter.post("/create", async (req, res, next) => {
         const newModel = new mainModel({
+            _id: Date.now(),
             title: req.body.title,
             description: req.body.description,
             start: req.body.start,

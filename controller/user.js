@@ -27,6 +27,16 @@ module.exports.controllerFunction = function (app) {
         });
     });
 
+    mainRouter.post("/EmailToId", async (req, res, next) => {
+        mainModel.findOne({ email: req.body.email }, function (err, doc) {
+            if (err) {
+                return res.send(err);
+            } else {
+                res.send(doc);
+            }
+        });
+    });
+
     mainRouter.post("/create", async (req, res, next) => {
         const newModel = new mainModel({
             name: req.body.name,

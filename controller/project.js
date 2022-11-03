@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const mainRouter = express.Router();
 const mainModel = mongoose.model("Project");
+const userModel = mongoose.model("User");
 
 
 module.exports.controllerFunction = function (app) {
@@ -28,17 +29,38 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/create", async (req, res, next) => {
+        var team = req.body.team ? req.body.team : [];
         const newModel = new mainModel({
+            _id: Date.now(),
             name: req.body.name,
+            team: team,
             cDate: Date.now(),
             uDate: Date.now()
         });
 
         newModel.save(function (err, doc) {
             if (err) {
+                console.log(err);
                 return res.send(err);
             } else {
-                res.send(doc)
+                console.log(doc);
+                userModel.findByIdAndUpdate(req.body.userId,
+                    { $push: { projects: doc._id } },
+                    { upsert: true, new: true },
+                    function (err, doc) {
+                        if (err) {
+                            return res.send(err);
+                        } else {
+                            doc.uDate = Date.now();
+                            doc.save(function (err, newDoc) {
+                                if (err) {
+                                    return res.send(err);
+                                } else {
+                                    res.send(doc)
+                                }
+                            });
+                        }
+                    });
             }
         });
     });

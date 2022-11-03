@@ -19,12 +19,16 @@ const userSchema = new Schema({
     profilePic: {
         type: String,
     },
-    email:{
+    email: {
         type: String,
     },
     subscription: {
         type: String,
         default: "free",
+    },
+    projects: {
+        type: [String],
+        default: [],
     }
 });
 

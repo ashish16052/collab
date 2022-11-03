@@ -18,12 +18,7 @@ const projectSchema = new Schema({
         required: true,
     },
     team: {
-        type: [
-            {
-                userId: String,
-                role: String,
-            }
-        ],
+        type: [String],
         default: []
     },
     task: {
