@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const mainRouter = express.Router();
 const mainModel = mongoose.model("User");
+const projectModel = mongoose.model("Project");
 
 
 module.exports.controllerFunction = function (app) {
@@ -27,7 +28,7 @@ module.exports.controllerFunction = function (app) {
         });
     });
 
-    mainRouter.post("/EmailToId", async (req, res, next) => {
+    mainRouter.post("/Email", async (req, res, next) => {
         mainModel.findOne({ email: req.body.email }, function (err, doc) {
             if (err) {
                 return res.send(err);
@@ -81,6 +82,19 @@ module.exports.controllerFunction = function (app) {
                 res.send(doc);
             }
         });
+    });
+
+    mainRouter.post("/removeProject/:id", async (req, res, next) => {
+        mainModel.findByIdAndUpdate(req.params.id,
+            { "$pull": { "projects": req.body.projectId } },
+            { new: true },
+            function (err, doc) {
+                if (err) {
+                    return res.send(err);
+                } else {
+                    res.send(doc);
+                }
+            });
     });
 
     app.use("/v1/user", mainRouter);

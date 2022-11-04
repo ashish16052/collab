@@ -29,40 +29,29 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/create", async (req, res, next) => {
-        var team = req.body.team ? req.body.team : [];
-        const newModel = new mainModel({
-            _id: Date.now(),
-            name: req.body.name,
-            team: team,
-            cDate: Date.now(),
-            uDate: Date.now()
-        });
-
-        newModel.save(function (err, doc) {
-            if (err) {
-                console.log(err);
-                return res.send(err);
-            } else {
-                console.log(doc);
-                userModel.findByIdAndUpdate(req.body.userId,
-                    { $push: { projects: doc._id } },
-                    { upsert: true, new: true },
-                    function (err, doc) {
-                        if (err) {
-                            return res.send(err);
-                        } else {
-                            doc.uDate = Date.now();
-                            doc.save(function (err, newDoc) {
+        mainModel.findByIdAndUpdate(req.body._id,
+            req.body,
+            { upsert: true, new: true },
+            function (err, doc) {
+                if (err) {
+                    return res.send(err);
+                } else if (doc) {
+                    doc.team.map((user) => {
+                        userModel.findByIdAndUpdate(user._id,
+                            { $addToSet: { projects: doc._id } },
+                            { upsert: true, new: true },
+                            function (err, doc) {
                                 if (err) {
                                     return res.send(err);
                                 } else {
-                                    res.send(doc)
+                                    doc.uDate = Date.now();
+                                    doc.save();
                                 }
                             });
-                        }
-                    });
-            }
-        });
+                    })
+                    return res.send(doc);
+                }
+            });
     });
 
     mainRouter.post("/update/:id", async (req, res, next) => {
@@ -73,7 +62,6 @@ module.exports.controllerFunction = function (app) {
                     return res.send(err);
                 } else {
                     doc.uDate = Date.now();
-
                     doc.save(function (err, newDoc) {
                         if (err) {
                             return res.send(err);
