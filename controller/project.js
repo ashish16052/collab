@@ -49,7 +49,7 @@ module.exports.controllerFunction = function (app) {
                                 }
                             });
                     })
-                    return res.send(doc);
+                    res.send(doc);
                 }
             });
     });
@@ -77,7 +77,12 @@ module.exports.controllerFunction = function (app) {
         mainModel.findByIdAndDelete(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
-            } else {
+            } else if (doc) {
+                doc.team.map((user) => {
+                    userModel.findByIdAndUpdate(user._id, { "$pull": { "projects": req.params.id } }, { new: true }, function (err, doc) {
+                        console.log(doc);
+                    });
+                })
                 res.send(doc);
             }
         });
