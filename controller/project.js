@@ -2,14 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const mainRouter = express.Router();
-const mainModel = mongoose.model("Project");
+const projectModel = mongoose.model("Project");
 const userModel = mongoose.model("User");
+const taskModel = mongoose.model("Task");
 
 
 module.exports.controllerFunction = function (app) {
 
     mainRouter.post("/readAll", async (req, res, next) => {
-        mainModel.find(function (err, doc) {
+        projectModel.find(function (err, doc) {
             if (err) {
                 return res.send(err);
             } else {
@@ -19,7 +20,7 @@ module.exports.controllerFunction = function (app) {
     })
 
     mainRouter.post("/readOne/:id", async (req, res, next) => {
-        mainModel.findById(req.params.id, function (err, doc) {
+        projectModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
             } else {
@@ -29,7 +30,7 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/create", async (req, res, next) => {
-        mainModel.findByIdAndUpdate(req.body._id,
+        projectModel.findByIdAndUpdate(req.body._id,
             req.body,
             { upsert: true, new: true },
             function (err, doc) {
@@ -55,7 +56,7 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/update/:id", async (req, res, next) => {
-        mainModel.findByIdAndUpdate(req.params.id, req.body,
+        projectModel.findByIdAndUpdate(req.params.id, req.body,
             { upsert: true, new: true },
             function (err, doc) {
                 if (err) {
@@ -74,13 +75,18 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/delete/:id", async (req, res, next) => {
-        mainModel.findByIdAndDelete(req.params.id, function (err, doc) {
+        projectModel.findByIdAndDelete(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
             } else if (doc) {
                 doc.team.map((user) => {
                     userModel.findByIdAndUpdate(user._id, { "$pull": { "projects": req.params.id } }, { new: true }, function (err, doc) {
-                        console.log(doc);
+                        // console.log(doc);
+                    });
+                })
+                doc.task.map((task) => {
+                    taskModel.findByIdAndDelete(task, function (err, doc) {
+                        // console.log(doc);
                     });
                 })
                 res.send(doc);
