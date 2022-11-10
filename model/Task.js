@@ -33,7 +33,7 @@ const taskSchema = new Schema({
     taskStatus:
     {
         type: String,
-        default: "todo"
+        default: "to do"
     },
     assign: {
         type: [Object],
@@ -43,15 +43,6 @@ const taskSchema = new Schema({
         type: [String],
         default: [],
     },
-    subtask: {
-        type: [
-            {
-                subTaskTitle: String,
-                done: Boolean
-            }
-        ],
-        default: [],
-    }
 });
 
 mongoose.model("Task", taskSchema);
