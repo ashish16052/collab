@@ -2,13 +2,24 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const mainRouter = express.Router();
-const mainModel = mongoose.model("Task");
+const taskModel = mongoose.model("Task");
+const projectModel = mongoose.model("Project");
 
 
 module.exports.controllerFunction = function (app) {
 
     mainRouter.post("/readAll", async (req, res, next) => {
-        mainModel.find(function (err, doc) {
+        taskModel.find(function (err, doc) {
+            if (err) {
+                return res.send(err);
+            } else {
+                res.send(doc);
+            }
+        });
+    })
+
+    mainRouter.post("/readProject/:id", async (req, res, next) => {
+        taskModel.find({ projectId: req.params.id }, function (err, doc) {
             if (err) {
                 return res.send(err);
             } else {
@@ -18,7 +29,7 @@ module.exports.controllerFunction = function (app) {
     })
 
     mainRouter.post("/readOne/:id", async (req, res, next) => {
-        mainModel.findById(req.params.id, function (err, doc) {
+        taskModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
             } else {
@@ -28,31 +39,32 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/create", async (req, res, next) => {
-        const newModel = new mainModel({
-            _id: Date.now(),
-            title: req.body.title,
-            description: req.body.description,
-            start: req.body.start,
-            end: req.body.end,
-            taskStatus: req.body.taskStatus,
-            assign: req.body.assign,
-            tags: req.body.tags,
-            subtask: req.body.subtask,
-            cDate: Date.now(),
-            uDate: Date.now()
-        });
-
-        newModel.save(function (err, doc) {
-            if (err) {
-                return res.send(err);
-            } else {
-                res.send(doc)
-            }
-        });
+        taskModel.findByIdAndUpdate(req.body._id, req.body,
+            { upsert: true, new: true },
+            function (err, doc) {
+                if (err) {
+                    return res.send(err);
+                } else if (doc) {
+                    projectModel.findByIdAndUpdate(req.body.projectId,
+                        { $addToSet: { task: doc._id } },
+                        { upsert: true, new: true },
+                        function (err, newdoc) {
+                            if (err) {
+                                return res.send(err);
+                            } else {
+                                newdoc.uDate = Date.now();
+                                var unique = [...newdoc.tags, ...doc.tags]
+                                newdoc.tags = [...new Set(unique.map((item) => { return item }))]
+                                newdoc.save();
+                                res.send(doc);
+                            }
+                        });
+                }
+            });
     });
 
     mainRouter.post("/update/:id", async (req, res, next) => {
-        mainModel.findByIdAndUpdate(req.params.id, req.body,
+        taskModel.findByIdAndUpdate(req.params.id, req.body,
             { upsert: true, new: true },
             function (err, doc) {
                 if (err) {
@@ -72,11 +84,13 @@ module.exports.controllerFunction = function (app) {
     });
 
     mainRouter.post("/delete/:id", async (req, res, next) => {
-        mainModel.findByIdAndDelete(req.params.id, function (err, doc) {
+        taskModel.findByIdAndDelete(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
             } else {
-                res.send(doc);
+                projectModel.findByIdAndUpdate(doc.projectId, { "$pull": { "task": req.params.id } }, { new: true }, function (err, newdoc) {
+                    res.send(doc);
+                });
             }
         });
     });

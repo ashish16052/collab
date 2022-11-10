@@ -30,6 +30,10 @@ const projectSchema = new Schema({
         type: [String],
         default: []
     },
+    tags: {
+        type: [String],
+        default: []
+    }
 });
 
 

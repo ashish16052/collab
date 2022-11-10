@@ -20,6 +20,9 @@ const taskSchema = new Schema({
     description: {
         type: String,
     },
+    projectId: {
+        type: String,
+    },
     start: {
         type: Date,
     },
@@ -33,7 +36,7 @@ const taskSchema = new Schema({
         default: "todo"
     },
     assign: {
-        type: [String],
+        type: [Object],
         default: [],
     },
     tags: {
