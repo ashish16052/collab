@@ -23,8 +23,11 @@ module.exports.controllerFunction = function (app) {
         projectModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
-            } else {
-                res.send(doc);
+            } else if (doc && req.user) {
+                if (doc.team.find(e => e._id == req.user._id) != null)
+                    res.send(doc);
+                else
+                    res.send(null)
             }
         });
     });
