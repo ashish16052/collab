@@ -4,7 +4,7 @@
   "description": "Project tracker and collabration",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "test"
   },
   "author": "ashish",
