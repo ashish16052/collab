@@ -20,6 +20,7 @@ module.exports.controllerFunction = function (app) {
     })
 
     mainRouter.post("/readOne/:id", async (req, res, next) => {
+        console.log(req.user);
         projectModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
