@@ -9,7 +9,7 @@ require("dotenv").config();
 const app = express();
 
 var corsOptions = {
-    origin: true,
+    origin: process.env.CLIENT_URL,
     credentials: true,
     optionsSuccessStatus: 200,
 };
