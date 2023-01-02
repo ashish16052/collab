@@ -32,10 +32,22 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.DB);
+const connectDB = async () => {
+    try {
+        mongoose.connect(process.env.DB);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log("Server started at port: " + process.env.PORT);
+    });
+})
 
 mongoose.connection.on("connected", () => {
-    console.log("Connected to production database:", process.env.DB);
+    console.log("Connected to production database");
 }).on("error", (err) => {
     console.log("Error in database connection" + err);
 });
@@ -51,6 +63,3 @@ fs.readdirSync("./controller").forEach(function (file) {
     }
 });
 
-app.listen(process.env.PORT, () => {
-    console.log("Server started at port: " + port);
-});  
