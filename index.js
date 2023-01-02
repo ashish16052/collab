@@ -23,11 +23,20 @@ app.use(
         parameterLimit: 1000000,
     })
 );
-
+app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    proxy: true,
+    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+    cookie: {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: process.env.SECRET,
+        secure: true,
+        httpOnly: false,
+        sameSite: "none",
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
