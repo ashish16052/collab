@@ -6,7 +6,6 @@ const session = require('express-session');
 const passportSetup = require('./lib/passport');
 const fs = require("fs");
 require("dotenv").config();
-const port = process.env.PORT;
 const app = express();
 
 var corsOptions = {
@@ -52,6 +51,6 @@ fs.readdirSync("./controller").forEach(function (file) {
     }
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server started at port: " + port);
 });  
