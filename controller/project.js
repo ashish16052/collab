@@ -20,6 +20,7 @@ module.exports.controllerFunction = function (app) {
     })
 
     mainRouter.post("/readOne/:id", async (req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
         projectModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
