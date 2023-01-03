@@ -25,10 +25,10 @@ module.exports.controllerFunction = function (app) {
             if (err) {
                 return res.send(err);
             } else if (doc) {
-                if (doc.team.find(e => e._id == req.user._id) != null)
-                    res.send(doc);
-                else
-                    res.send(null)
+                res.send(doc);
+                // if (doc.team.find(e => e._id == req.user._id) != null)
+                // else
+                    // res.send(null)
             }
         });
     });
