@@ -20,11 +20,11 @@ module.exports.controllerFunction = function (app) {
     })
 
     mainRouter.post("/readOne/:id", async (req, res, next) => {
-        console.log(req.user);
+        // console.log(req.user);
         projectModel.findById(req.params.id, function (err, doc) {
             if (err) {
                 return res.send(err);
-            } else if (doc && req.user) {
+            } else if (doc) {
                 if (doc.team.find(e => e._id == req.user._id) != null)
                     res.send(doc);
                 else
