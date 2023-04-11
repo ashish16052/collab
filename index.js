@@ -27,7 +27,7 @@ app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     proxy: true,
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     cookie: {
