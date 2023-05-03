@@ -1,0 +1,71 @@
+.list-view {
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: var(--shadow);
+    min-width: fit-content;
+}
+
+.list-task {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    // margin-bottom: 5px;
+    cursor: pointer;
+
+    .status {
+        height: 30px;
+        cursor: pointer;
+        margin-right: 15px;
+    }
+
+    .list-title {
+        width: 30%;
+        text-align: left;
+        margin-right: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow:ellipsis;
+    }
+
+    .date {
+        margin-right: 40px;
+        background-color: var(--5);
+        border-radius: 4px;
+        padding: 2px 5px;
+    }
+
+    .people {
+        margin-right: 10px;
+        margin-left: auto;
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        justify-content: right;
+        border-radius: 50px;
+
+        .people-pfp {
+            height: 30px;
+            border-radius: 50%;
+            margin-left: -10px;
+        }
+    }
+
+    .tags {
+        display: flex;
+        width: 20%;
+        overflow: hidden;
+        border-radius: 4px;
+
+        .tag {
+            border-radius: 4px;
+            padding: 2px 5px;
+            background-color: var(--4);
+            color: var(--2);
+            width: fit-content;
+            font-size: 10px;
+            margin: 0 2px;
+        }
+    }
+}

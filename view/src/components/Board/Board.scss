@@ -1,0 +1,122 @@
+.board {
+    // background-color: #ebecf0;
+    background-image: url("https://www.transparenttextures.com/patterns/worn-dots.png");
+    background-color: var(--5);
+    width: 80vw;
+    padding: 10px 30px;
+    height: 100vh;
+    overflow-y: scroll;
+
+    .placeholder {
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: 30px;
+
+        img {
+            height: 100px;
+            margin: 10px;
+            animation: load 2s linear infinite;
+            animation-timing-function: cubic-bezier(0.1, 0.3, 0, 0.3);
+        }
+
+        @keyframes load {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+    }
+
+    .dash-nav {
+        min-width: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .project-info {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            width: 50%;
+
+            .project-title {
+                text-align: left;
+                width: fit-content;
+            }
+
+            .edit {
+                height: 30px;
+                padding: 0 10px;
+                cursor: pointer;
+            }
+        }
+
+        .view {
+            display: flex;
+            align-items: center;
+
+            img {
+                margin: 0 20px;
+                height: 30px;
+                cursor: pointer;
+            }
+
+            button {
+                border: none;
+                background-color: transparent;
+            }
+        }
+
+        .add-task {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 8px;
+            background-color: var(--4);
+            color: var(--2);
+            border-radius: 5px;
+            cursor: pointer;
+            width: 150px;
+            margin: 0 20px;
+            img {
+                margin-right: 5px;
+                height: 20px;
+            }
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 30px;
+                cursor: pointer;
+            }
+
+            .team-bar {
+                display: flex;
+                margin: 0px 20px;
+
+                .pfp {
+                    margin: 0px -5px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .board-area {
+        padding: 20px 10px;
+        min-width: fit-content;
+    }
+}
+
+.board::-webkit-scrollbar {
+    display: none;
+}

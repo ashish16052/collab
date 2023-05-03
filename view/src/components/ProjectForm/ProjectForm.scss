@@ -1,0 +1,107 @@
+.project-form-wrapper {
+    background-color: #0000003c;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .project-form-modal {
+        background-color: var(--2);
+        border-radius: 10px;
+        height: fit-content;
+        width: 60vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px 30px;
+
+        .project-form {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                border: none;
+                outline: none;
+                height: 30px;
+            }
+
+            .project-title {
+                font-size: 35px;
+                padding: 10px 10px 10px 0;
+            }
+
+            label {
+                font-size: 15px;
+                text-align: left;
+                padding: 20px 0;
+                display: inline;
+
+                span {
+                    color: red;
+                }
+            }
+
+            .add-people {
+                font-size: 15px;
+                font-family: inherit;
+                color: inherit;
+                padding: 0 0 20px 0;
+                display: inline;
+            }
+
+            .select {
+
+                .css-1s2u09g-control,
+                .css-1pahdxg-control {
+                    border-color: var(--4);
+                    box-shadow: none;
+                }
+            }
+
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+
+            span {
+                background-color: transparent;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                border: none;
+                // border: none;
+            }
+
+            .delete {
+                background-color: var(--5);
+                color: var(--1);
+            }
+
+            .cancel {
+                border: 1px solid var(--4);
+                color: var(--4);
+                margin-right: 20px;
+            }
+
+            .save {
+                background-color: var(--4);
+                color: var(--2);
+            }
+
+            .action-buttons-right {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 80vw;
+        }
+    }
+}

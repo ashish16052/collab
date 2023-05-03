@@ -1,0 +1,48 @@
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+
+    .pfp {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+    }
+
+    .name {
+        font-size: 18px;
+        font-weight: 700px;
+        font-weight: bold;
+        margin: 0 15px 0 0;
+    }
+
+    .logout {
+        height: 20px;
+        cursor: pointer;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            display: none;
+        }
+
+        .pfp {
+            margin: 5px 0 10px 0;
+        }
+
+        .logout {
+            height: 25px;
+        }
+    }
+}

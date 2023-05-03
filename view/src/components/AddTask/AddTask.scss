@@ -1,0 +1,171 @@
+.addTask {
+    background-color: #0000003c;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .addTask-modal {
+        background-color: var(--2);
+        border-radius: 10px;
+        // height: 65vh;
+        width: 60vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px 30px;
+
+        .task-form {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                height: 30px;
+            }
+
+            input.red {
+                border: red solid 1px;
+                margin-bottom: 2px;
+                border-radius: 5px;
+                outline: none;
+                height: 30px;
+            }
+
+            .task-title {
+                font-size: 35px;
+                padding: 10px 10px 10px 0;
+            }
+
+            .task-description {
+                border: none;
+                outline: none;
+                resize: none;
+                font-family: inherit;
+                padding: 15px 10px 15px 0;
+                font-size: 15px;
+                color: var(--1);
+            }
+
+            .date {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px 0;
+                font-size: 15px;
+
+                .date-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    @media screen and (max-width: 950px) {
+                        margin: 10px 0;
+                        width: 100%;
+                    }
+                }
+
+                .react-datepicker-wrapper {
+                    width: fit-content;
+                    color: var(--1);
+
+                    input {
+                        margin-left: 20px;
+                        padding: 0px 10px;
+                        border-radius: 5px;
+                        color: var(--1);
+                        cursor: pointer;
+                        border: 1px solid var(--4);
+                    }
+                }
+            }
+
+            .date.red {
+                input {
+                    border: red solid 1px;                    
+                }
+            }
+
+
+            .dropdowns {
+                display: flex;
+                justify-content: space-between;
+
+                .select {
+                    margin: 15px 0;
+                    width: 44%;
+
+                    .css-1s2u09g-control,
+                    .css-1pahdxg-control {
+                        border-color: var(--4);
+                        box-shadow: none;
+                    }
+                }
+
+                .select.red {
+                    .css-1s2u09g-control {
+                        border: red solid 1px;
+                    }
+                }
+            }
+
+            .select {
+                margin: 15px 0;
+
+                .css-1s2u09g-control,
+                .css-1pahdxg-control {
+                    border-color: var(--4);
+                    box-shadow: none;
+                }
+            }
+
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0 0 0;
+
+            span {
+                background-color: transparent;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                border: none;
+                // border: none;
+            }
+
+            .delete {
+                background-color: var(--5);
+                color: var(--1);
+            }
+
+            .cancel {
+                border: 1px solid var(--4);
+                color: var(--4);
+                margin-right: 20px;
+            }
+
+            .save {
+                background-color: var(--4);
+                color: var(--2);
+            }
+
+            .action-buttons-right {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 80vw;
+        }
+    }
+}

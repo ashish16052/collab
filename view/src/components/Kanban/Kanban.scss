@@ -1,0 +1,83 @@
+.kanban {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    @media screen and (max-width: 600px) {
+        width: fit-content;
+        flex-wrap: nowrap;
+        // justify-content: center;
+    }
+
+    .col {
+        width: 280px;
+        margin: 0 20px 0 0;
+
+        h4 {
+            color: var(--1);
+        }
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--2);
+    box-shadow: var(--shadow);
+    margin: 1vw 0;
+    min-height: 150px;
+    padding: 10px;
+    width: 260px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    h4 {
+        opacity: 1;
+        color: var(--1);
+    }
+
+    .card-desc {
+        text-align: left;
+        padding: 5px 0;
+    }
+
+    .dates {
+        width: 100%;
+        display: flex;
+        font-size: 15px;
+        padding: 5px 0;
+
+        .date {
+            margin-right: 10px;
+            background-color: var(--5);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5px 0;
+
+        .tag {
+            margin: 2px 2px;
+            border-radius: 4px;
+            padding: 2px 5px;
+            background-color: var(--4);
+            color: var(--2);
+            width: fit-content;
+            font-size: 10px;
+        }
+    }
+
+    .people {
+        .people-pfp {
+            height: 30px;
+            border-radius: 50%;
+            margin-right: -10px;
+        }
+    }
+}

@@ -1,0 +1,231 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0 40px;
+    margin-bottom: 50px;
+
+    .landing-title {
+        margin-top: 60px;
+        font-size: 30px;
+        position: relative;
+
+        .oval {
+            @media screen and (max-width:850px) {
+                width: 80%;
+            }
+        }
+
+        @media screen and (max-width:850px) {
+            margin-top: 0px;
+            font-size: 20px;
+        }
+
+        @media screen and (max-width:650px) {
+            margin-top: 0px;
+            font-size: 15px;
+        }
+
+    }
+
+    .landing-qoute {
+        font-size: 20px;
+        margin: 10px 0 25px 0;
+        width: 450px;
+
+        @media screen and (max-width:850px) {
+            font-size: 18px;
+            width: 300px;
+        }
+    }
+
+    .cta-btn {
+        padding: 10px 20px;
+        background-color: var(--4);
+        color: var(--2);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .link {
+        padding: 10px 20px;
+        background-color: var(--4);
+        color: var(--2);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .screenshot1 {
+        margin: 30px 0;
+        width: 80vw;
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+    }
+}
+
+.features {
+    .feature {
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: space-between;
+
+        .feature-about {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 50px;
+            position: relative;
+
+            .scribble {
+                width: 100%;
+
+                @media screen and (max-width:1000px) {
+                    width: 80%;
+                }
+            }
+
+            .blink {
+                width: 110%;
+                margin-bottom: 10px;
+
+                @media screen and (max-width:1000px) {
+                    width: 80%;
+                }
+            }
+
+            .oval {
+                width: 100%;
+                margin-bottom: 10px;
+
+                @media screen and (max-width:1000px) {
+                    width: 80%;
+                }
+            }
+
+            .curly {
+                width: 110%;
+
+                @media screen and (max-width:1000px) {
+                    width: 80%;
+                }
+            }
+
+            h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+
+            @media screen and (max-width:600px) {
+                h1 {
+                    font-size: 30px;
+                }
+
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .feature-img {
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+
+            @media screen and (max-width:1000px) {
+                width: 80vw;
+                height: auto;
+                margin: 20px 0;
+            }
+        }
+
+        .feature-img.add-team {
+            height: 280px;
+
+            @media screen and (max-width:1000px) {
+                width: 80vw;
+                height: auto;
+                margin: 20px 0;
+            }
+        }
+
+        @media screen and (max-width:1000px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .feature.left {
+        @media screen and (max-width:1000px) {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+    }
+}
+
+.pricing {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .price-card {
+        margin: 20px 20px;
+        padding: 20px;
+        width: 250px;
+        height: 300px;
+        border: 1px solid var(--4);
+        box-shadow: 0 15px 30px -12px rgb(0 0 0 / 25%);
+        border-radius: 10px;
+        position: relative;
+
+        p {
+            margin: 10px 0;
+        }
+
+        .plan-list {
+            margin-top: 30px;
+
+            .plan-li {
+                display: flex;
+                align-items: center;
+
+                .plan-tick {
+                    height: 20px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .cta-btn {
+            padding: 10px 30px;
+            width: 240px;
+            background-color: var(--4);
+            color: var(--2);
+            border: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    }
+}
+
+.footer {
+    height: 50px;
+    padding: 30px 0 0 0;
+    a{
+        color: var(--4);
+    }
+}

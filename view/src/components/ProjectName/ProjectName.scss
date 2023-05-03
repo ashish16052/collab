@@ -1,0 +1,47 @@
+.project-name {
+    background-color: var(--4);
+    color: var(--2);
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    width: 75%;
+    cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+        width: 20px;
+        padding: 10px 12px;
+        color: transparent;
+    }
+}
+
+.add-project {
+    background-color: var(--2);
+    color: var(--4);
+    border: 1px solid var(--4);
+    width: 75%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 20px;
+        border: none;
+        height: 30px;
+
+        p {
+            display: none;
+        }
+
+        img {
+            margin-right: 0;
+        }
+    }
+}
