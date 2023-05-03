@@ -94,7 +94,7 @@ const AddTask = (props) => {
             cDate: Date.now(),
             uDate: Date.now()
         }
-        axios.post(`https://collab.ashishmohite160.repl.co/v1/task/create`, body)
+        axios.post(`http://localhost:5001/v1/task/create`, body)
             .then((response) => {
                 // console.log(response.data);
                 dispatch(hideTaskModal())
@@ -102,7 +102,7 @@ const AddTask = (props) => {
     }
 
     const deleteTask = async () => {
-        axios.post(`https://collab.ashishmohite160.repl.co/v1/task/delete/${taskData._id}`)
+        axios.post(`http://localhost:5001/v1/task/delete/${taskData._id}`)
             .then((response) => {
                 dispatch(hideTaskModal())
             });

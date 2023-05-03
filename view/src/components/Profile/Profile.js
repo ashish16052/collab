@@ -13,7 +13,7 @@ const Profile = () => {
     const logoutUser = (e) => {
         e.preventDefault();
         sessionStorage.removeItem("user");
-        window.open(`https://collab.ashishmohite160.repl.co/auth/logout`, "_self");
+        window.open(`http://localhost:5001/auth/logout`, "_self");
         dispatch(logout());
     }
 

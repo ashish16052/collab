@@ -51,7 +51,7 @@ const ListTask = (props) => {
         var body = {
             taskStatus: statusChange,
         }
-        axios.post(`https://collab.ashishmohite160.repl.co/v1/task/update/${props.task._id}`, body)
+        axios.post(`http://localhost:5001/v1/task/update/${props.task._id}`, body)
             .then((response) => {
                 console.log(response.data);
                 setTask(response.data);

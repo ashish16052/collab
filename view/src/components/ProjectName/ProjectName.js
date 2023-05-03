@@ -14,7 +14,7 @@ const ProjectName = (props) => {
     axios.defaults.withCredentials = true
 
     const getProject = async () => {
-        const { data } = await axios.post(`https://collab.ashishmohite160.repl.co/v1/project/readOne/${props.projectId}`)
+        const { data } = await axios.post(`http://localhost:5001/v1/project/readOne/${props.projectId}`)
         setProjectData(data);
 
     }

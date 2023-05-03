@@ -29,7 +29,7 @@ const Leftbar = () => {
 
     const getUser = async () => {
         if (user && user._id) {
-            const { data } = await axios.post(`https://collab.ashishmohite160.repl.co/v1/user/readOne/${user._id}`)
+            const { data } = await axios.post(`http://localhost:5001/v1/user/readOne/${user._id}`)
             // console.log(data);
             dispatch(login(data))
         }

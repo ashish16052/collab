@@ -49,7 +49,7 @@ const ProjectForm = () => {
         else if (a.action === 'remove-value') {
             setTeam(e.filter(item => item !== a.removedValue))
             if (project && project._id)
-                axios.post(`https://collab.ashishmohite160.repl.co/v1/user/removeProject/${a.removedValue.value._id}`,
+                axios.post(`http://localhost:5001/v1/user/removeProject/${a.removedValue.value._id}`,
                     { projectId: project._id })
                     .then((response) => {
                         // console.log(response.data);
@@ -60,7 +60,7 @@ const ProjectForm = () => {
         }
         else if (a.action === 'create-option' && e.length) {
             var email = e[e.length - 1].value
-            axios.post(`https://collab.ashishmohite160.repl.co/v1/user/Email`,
+            axios.post(`http://localhost:5001/v1/user/Email`,
                 {
                     email: email
                 })
@@ -102,7 +102,7 @@ const ProjectForm = () => {
         var cDate = project && project.cDate ? project.cDate : Date.now()
         // console.log(title);
         // console.log(peopleArr);
-        axios.post(`https://collab.ashishmohite160.repl.co/v1/project/create`,
+        axios.post(`http://localhost:5001/v1/project/create`,
             {
                 _id: projectId,
                 name: title ? title : 'My Project',
@@ -119,7 +119,7 @@ const ProjectForm = () => {
     }
 
     const deleteProject = async () => {
-        axios.post(`https://collab.ashishmohite160.repl.co/v1/project/delete/${project._id}`)
+        axios.post(`http://localhost:5001/v1/project/delete/${project._id}`)
             .then((response) => {
                 // console.log("Project deleted")
                 // console.log(response.data);

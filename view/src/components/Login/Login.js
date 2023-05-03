@@ -13,14 +13,14 @@ const Login = () => {
 
     const googleAuth = (e) => {
         e.preventDefault();
-        window.open(`https://collab.ashishmohite160.repl.co/auth/google/callback`, "_self");
+        window.open(`http://localhost:5001/auth/google/callback`, "_self");
     }
 
     const logoutUser = (e) => {
         e.preventDefault();
         sessionStorage.removeItem("user");
         localStorage.removeItem("project");
-        window.open(`https://collab.ashishmohite160.repl.co/auth/logout`, "_self");
+        window.open(`http://localhost:5001/auth/logout`, "_self");
         dispatch(logout());
     }
 

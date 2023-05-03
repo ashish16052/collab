@@ -5,7 +5,7 @@ import './Landing.scss'
 const Pricing = () => {
   const googleAuth = (e) => {
     e.preventDefault();
-    window.open(`https://collab.ashishmohite160.repl.co/auth/google/callback`, "_self");
+    window.open(`http://localhost:5001/auth/google/callback`, "_self");
   }
   return (
     <div className='pricing'>

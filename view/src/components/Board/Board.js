@@ -37,7 +37,7 @@ const Board = () => {
   axios.defaults.withCredentials = true
   
   const getProject = async () => {
-    const { data } = await axios.post(`https://collab.ashishmohite160.repl.co/v1/project/readOne/${id}`)
+    const { data } = await axios.post(`http://localhost:5001/v1/project/readOne/${id}`)
     // console.log(data);
     setProjectData(data);
     setProject(data);

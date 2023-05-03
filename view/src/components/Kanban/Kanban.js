@@ -12,7 +12,7 @@ const Kanban = () => {
   const modal = useSelector((state) => state.modal.value).taskModal
 
   const getTasks = async () => {
-    const { data } = await axios.post(`https://collab.ashishmohite160.repl.co/v1/task/readProject/${id}`)
+    const { data } = await axios.post(`http://localhost:5001/v1/task/readProject/${id}`)
     // console.log(data);
     setTaskArray(data);
   }
@@ -26,7 +26,7 @@ const Kanban = () => {
     var body = {
       taskStatus: result.destination.droppableId,
     }
-    axios.post(`https://collab.ashishmohite160.repl.co/v1/task/update/${result.source.index}`, body)
+    axios.post(`http://localhost:5001/v1/task/update/${result.source.index}`, body)
       .then((response) => {
         console.log(response.data);
         getTasks();

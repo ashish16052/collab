@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
 
   const getUser = async () => {
-    const { data } = await axios.get(`https://collab.ashishmohite160.repl.co/auth/loginStatus`, { withCredentials: true })
+    const { data } = await axios.get(`http://localhost:5001/auth/loginStatus`, { withCredentials: true })
     setUser(data);
     sessionStorage.setItem('user', JSON.stringify(data));
     dispatch(login(data))
